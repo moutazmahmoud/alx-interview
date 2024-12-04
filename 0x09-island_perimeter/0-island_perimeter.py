@@ -1,51 +1,40 @@
 #!/usr/bin/python3
-"""Module for Island Perimeter
+"""
+Function to calculate the perimeter of an island in a grid.
 """
 
-
 def island_perimeter(grid):
-    """Returns the perimeter of the island described in grid.
-
-    grid is a list of list of integers:
-    - 0 represents water
-    - 1 represents land
-    Each cell is square, with a side length of 1
-    Cells are connected horizontally/vertically (not diagonally).
-    grid is rectangular, with its width and height not exceeding 100
-    The grid is completely surrounded by water
-    There is only one island (or nothing).
-    The island doesn’t have “lakes” (water inside that isn’t connected to
-    the water surrounding the island).
+    """
+    Returns the perimeter of the island described in the grid.
 
     Args:
-        grid (list of list of int): the grid representing the island
+        grid (list of list of int): 2D grid representing the island and water.
 
     Returns:
-        int: the perimeter of the island
+        int: The perimeter of the island.
     """
-    # Determine the number of rows and columns in the grid
+    if not grid or not grid[0]:  # Check if grid is empty or has no rows
+        return 0
+
     rows = len(grid)
     cols = len(grid[0])
-
-    # Initialize the perimeter variable to 0
     perimeter = 0
 
-    # Loop through each cell in the grid
-    for i in range(rows):
-        for j in range(cols):
-            if grid[i][j] == 1:
-                # Check the top edge
-                if i == 0 or grid[i-1][j] == 0:
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 1:
+                # Check each of the four sides
+                # Top
+                if r == 0 or grid[r - 1][c] == 0:
                     perimeter += 1
-                # Check the bottom edge
-                if i == rows-1 or grid[i+1][j] == 0:
+                # Bottom
+                if r == rows - 1 or grid[r + 1][c] == 0:
                     perimeter += 1
-                # Check the left edge
-                if j == 0 or grid[i][j-1] == 0:
+                # Left
+                if c == 0 or grid[r][c - 1] == 0:
                     perimeter += 1
-                # Check the right edge
-                if j == cols-1 or grid[i][j+1] == 0:
+                # Right
+                if c == cols - 1 or grid[r][c + 1] == 0:
                     perimeter += 1
 
-    # Return the total perimeter
     return perimeter
