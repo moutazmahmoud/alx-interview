@@ -5,8 +5,10 @@ Maria and Ben play a game using consecutive integers. The winner is determined
 by their ability to pick primes optimally.
 """
 
+
 def sieve_of_eratosthenes(n):
-    """Returns a list of prime numbers up to n using the Sieve of Eratosthenes."""
+    """Returns a list of prime numbers up t
+    o n using the Sieve of Eratosthenes."""
     is_prime = [True] * (n + 1)
     is_prime[0] = is_prime[1] = False
 
